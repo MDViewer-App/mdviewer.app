@@ -57,10 +57,14 @@
         .nav-brand {
             font-size: 1.5rem;
             font-weight: bold;
+        }
+        
+        .nav-brand a {
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-decoration: none;
         }
         
         .nav-links {
@@ -352,7 +356,9 @@
 <body>
     <nav>
         <div class="container">
-            <div class="nav-brand">MDViewer</div>
+            <div class="nav-brand">
+                <a href="index.html">MDViewer</a>
+            </div>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#download">Download</a>
@@ -522,7 +528,6 @@
                     <p style="color: var(--text-light); font-size: 0.9rem;">In the meantime, you can:</p>
                     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
                         <a href="docs.html" class="download-btn secondary" style="width: auto; min-width: 150px;">Read Documentation</a>
-                        <a href="https://github.com/MDViewer-App/mdviewer-core" class="download-btn secondary" style="width: auto; min-width: 150px;" target="_blank">View Source Code</a>
                         <a href="pricing.html" class="download-btn secondary" style="width: auto; min-width: 150px;">Learn About Support</a>
                     </div>
                     <p style="margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">Check back soon or follow our <a href="https://github.com/MDViewer-App/mdviewer.app" target="_blank" style="color: var(--primary-color);">GitHub repository</a> for updates.</p>
