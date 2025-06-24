@@ -344,8 +344,8 @@
                 </div>
                 
                 <h3>Download Links</h3>
-                <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">📦 MSI Installer (2.1 MB)</a>
-                <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Portable.zip" class="download-btn secondary">📦 Portable Version (~400 MB)</a>
+                <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">📦 MSI Installer (2.1 MB)</a>
+                <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Portable.zip" class="download-btn secondary">📦 Portable Version (~400 MB)</a>
                 
                 <h3>First Run</h3>
                 <p>After installation, MDViewer will:</p>
@@ -397,7 +397,7 @@
                 <div class="card">
                     <h4>Step-by-Step Instructions:</h4>
                     <ol>
-                        <li><strong>Download:</strong> <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">MDViewer-v1.4.4-Setup.msi</a></li>
+                        <li><strong>Download:</strong> <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">MDViewer-v1.4.4-Setup.msi</a></li>
                         <li><strong>Run:</strong> Double-click the downloaded MSI file</li>
                         <li><strong>Install:</strong> Click "Next" through the installation wizard</li>
                         <li><strong>Complete:</strong> Launch from Start Menu or desktop shortcut</li>
@@ -418,7 +418,7 @@
                     <h4>Portable ZIP Archive</h4>
                     <p>Perfect for users without admin rights or development environments.</p>
                     <ol>
-                        <li>Download: <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Portable.zip" class="download-btn secondary">MDViewer-v1.4.4-Portable.zip</a></li>
+                        <li>Download: <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Portable.zip" class="download-btn secondary">MDViewer-v1.4.4-Portable.zip</a></li>
                         <li>Extract the ZIP archive to desired location</li>
                         <li>Ensure .NET 8 runtime is installed</li>
                         <li>Launch <code>MDViewer.exe</code> from the extracted folder</li>
@@ -432,7 +432,7 @@
                     <p>For system administrators deploying across multiple machines:</p>
                     
                     <pre><code># Download and run the silent installer
-Invoke-WebRequest -Uri "https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/Install-MDViewer-v1.4.4.bat" -OutFile "Install-MDViewer.bat"
+Invoke-WebRequest -Uri "https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/Install-MDViewer-v1.4.4.bat" -OutFile "Install-MDViewer.bat"
 .\Install-MDViewer.bat
 
 # Or install MSI directly with silent parameters
@@ -447,7 +447,7 @@ msiexec /i MDViewer-v1.4.4-Setup.msi /quiet /norestart</code></pre>
 Get-FileHash .\MDViewer-v1.4.4-Setup.msi -Algorithm SHA256
 # Expected: 2F13022D7665BD8F852BA69DF569F86A9D89F3DC89FBC4AEA4D2255856CC669C</code></pre>
                 
-                <p>📋 Complete checksums available: <a href="https://github.com/MDViewer-App/mdviewer-core/releases/tag/v1.4.4">GitHub Releases Page</a></p>
+                <p>📋 Complete checksums available: <a href="https://github.com/MDViewer-App/mdviewer.app/releases/tag/v1.4.4">GitHub Releases Page</a></p>
             </section>
             
             <section id="features" class="section">
@@ -696,7 +696,7 @@ Get-FileHash .\MDViewer-v1.4.4-Setup.msi -Algorithm SHA256
                 <div class="card">
                     <h4>Silent Installation for Teams</h4>
                     <pre><code># PowerShell deployment script
-$installerUrl = "https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi"
+$installerUrl = "https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi"
 $installerPath = "$env:TEMP\MDViewer-Setup.msi"
 
 # Download installer
@@ -1104,7 +1104,7 @@ code {
             <p style="color: rgba(255, 255, 255, 0.8); margin: 0;">
                 &copy; 2025 MDViewer. Built for Windows documentation professionals. • 
                 <a href="index.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Home</a> • 
-                <a href="https://github.com/MDViewer-App/mdviewer-core/releases/tag/v1.4.4" style="color: rgba(255,255,255,0.8); text-decoration: none;">GitHub Releases</a>
+                <a href="https://github.com/MDViewer-App/mdviewer.app/releases" style="color: rgba(255,255,255,0.8); text-decoration: none;">GitHub Releases</a>
             </p>
         </div>
     </footer>
