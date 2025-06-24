@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support MDViewer - Pricing</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .pricing-hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        
+        .pricing-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .philosophy {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .philosophy h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .philosophy p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+        
+        .support-tiers {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tier-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .tier-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .tier-card.free {
+            border-color: #28a745;
+            background: linear-gradient(135deg, #f8fff9 0%, #f0fff4 100%);
+        }
+        
+        .tier-card.popular {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            position: relative;
+        }
+        
+        .tier-card.popular::before {
+            content: "Most Common";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .tier-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tier-card.free .tier-amount {
+            color: #28a745;
+        }
+        
+        .tier-description {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .support-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .support-btn.free {
+            background: #28a745;
+            color: white;
+        }
+        
+        .support-btn.free:hover {
+            background: #218838;
+        }
+        
+        .support-btn.paid {
+            background: #667eea;
+            color: white;
+        }
+        
+        .support-btn.paid:hover {
+            background: #5a6fd8;
+        }
+        
+        .trust-section {
+            background: #f8f9fa;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .trust-points {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .trust-point {
+            padding: 1rem;
+        }
+        
+        .trust-point h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .trust-point p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .footer-cta {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-points {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="/">MDViewer</a>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/docs">Documentation</a>
+                <a href="/pricing" class="active">Support</a>
+                <a href="https://github.com/MDViewer-App/mdviewer-core" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pricing-hero">
+        <h1>Support MDViewer</h1>
+        <p>Free for everyone. Support if you'd like. No strings attached.</p>
+    </div>
+
+    <div class="philosophy">
+        <h2>A Different Approach</h2>
+        <p>MDViewer is completely free for personal and commercial use. Always will be. No license keys, no DRM, no feature limitations.</p>
+        <p>If you find MDViewer useful and want to show appreciation, you can choose to support its development. But this is entirely optional — a gesture of gratitude, not obligation.</p>
+        
+        <div class="highlight">
+            "No license keys. No DRM. Just a thank-you from me if you find MDViewer useful."
+        </div>
+    </div>
+
+    <div class="support-tiers">
+        <h2 style="text-align: center; margin-bottom: 1rem;">Choose Your Support Level</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 3rem;">All options give you the same full-featured MDViewer. The amount is just your way of saying thanks.</p>
+        
+        <div class="tiers-grid">
+            <div class="tier-card free">
+                <div class="tier-amount">$0</div>
+                <div class="tier-description">
+                    Perfect choice! Get MDViewer completely free with all features included.
+                </div>
+                <a href="/download-access?tier=free" class="support-btn free">
+                    Get MDViewer Free
+                </a>
+            </div>
+            
+            <div class="tier-card">
+                <div class="tier-amount">$1</div>
+                <div class="tier-description">
+                    A coffee fund contribution. Small gesture, big appreciation!
+                </div>
+                <a href="#" onclick="supportWithStripe(100)" class="support-btn paid">
+                    Support with $1
+                </a>
+            </div>
+            
+            <div class="tier-card popular">
+                <div class="tier-amount">$2</div>
+                <div class="tier-description">
+                    The sweet spot. Covers hosting costs and shows you care.
+                </div>
+                <a href="#" onclick="supportWithStripe(200)" class="support-btn paid">
+                    Support with $2
+                </a>
+            </div>
+            
+            <div class="tier-card">
+                <div class="tier-amount">$5</div>
+                <div class="tier-description">
+                    Generous support that helps fund future development.
+                </div>
+                <a href="#" onclick="supportWithStripe(500)" class="support-btn paid">
+                    Support with $5
+                </a>
+            </div>
+            
+            <div class="tier-card">
+                <div class="tier-amount">$10</div>
+                <div class="tier-description">
+                    Incredible generosity that makes a real difference!
+                </div>
+                <a href="#" onclick="supportWithStripe(1000)" class="support-btn paid">
+                    Support with $10
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="trust-section">
+        <h2>Built on Trust</h2>
+        <div class="trust-points">
+            <div class="trust-point">
+                <h3>🔓 No Lock-in</h3>
+                <p>Your files stay yours. MDViewer works with standard markdown — no proprietary formats.</p>
+            </div>
+            <div class="trust-point">
+                <h3>🎯 No Upselling</h3>
+                <p>What you see is what you get. No "premium" features hidden behind paywalls.</p>
+            </div>
+            <div class="trust-point">
+                <h3>💝 Just Gratitude</h3>
+                <p>Support is purely voluntary. We're grateful whether you pay $0 or $10.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-cta">
+        <p>Questions? <a href="mailto:support@mdviewer.app">Get in touch</a> — we're here to help.</p>
+    </div>
+
+    <script>
+        function supportWithStripe(amountCents) {
+            // For now, redirect to a simple payment confirmation
+            // In production, this would integrate with Stripe Checkout
+            const amount = amountCents / 100;
+            
+            // Placeholder: In production, you'd create a Stripe Checkout session
+            // and redirect to it. For now, we'll simulate the flow.
+            
+            if (confirm(`Support MDViewer with $${amount}?\n\nThis will redirect you to a secure payment page.`)) {
+                // Simulate payment success for demo
+                window.location.href = `/download-access?tier=paid&amount=${amount}`;
+                
+                // In production, replace above with:
+                // window.location.href = `https://your-stripe-checkout-url?amount=${amountCents}`;
+            }
+        }
+
+        // Add some nice hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.tier-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
