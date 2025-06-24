@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDViewer Documentation - Complete Guide</title>
+    <meta name="description" content="Complete documentation for MDViewer - installation guides, feature explanations, troubleshooting, and enterprise deployment instructions.">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --primary-color: #764ba2;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --code-bg: #f8f9fa;
+            --border: #e9ecef;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: var(--primary-gradient);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Content */
+        .content {
+            background: var(--white);
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow);
+            padding: 3rem;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: var(--code-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            padding: 0.5rem 0;
+        }
+        
+        .toc a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+        }
+        
+        .section h3 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem 0;
+        }
+        
+        .section h4 {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        
+        /* Code blocks */
+        code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .card.warning {
+            border-left-color: #ffc107;
+            background: #fff8e1;
+        }
+        
+        .card.success {
+            border-left-color: #28a745;
+            background: #f8fff9;
+        }
+        
+        .card.info {
+            border-left-color: #17a2b8;
+            background: #e7f9fc;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        th {
+            background: var(--code-bg);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        /* Download buttons */
+        .download-btn {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+        }
+        
+        .download-btn.secondary {
+            background: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .download-btn.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="nav-brand">MDViewer</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#download">Download</a>
+                <a href="index.html#requirements">Requirements</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="content">
+            <div class="hero">
+                <h1>MDViewer Documentation</h1>
+                <p>Complete guide to installation, features, and usage for the professional Markdown viewer designed for Windows documentation workflows.</p>
+            </div>
+            
+            <div class="toc">
+                <h2>📋 Table of Contents</h2>
+                <ul>
+                    <li><a href="#quick-start">🚀 Quick Start</a></li>
+                    <li><a href="#installation">💿 Installation Guide</a></li>
+                    <li><a href="#features">✨ Feature Overview</a></li>
+                    <li><a href="#navigation">🧭 Navigation System</a></li>
+                    <li><a href="#editor">✏️ Built-in Editor</a></li>
+                    <li><a href="#export">📄 Export Features</a></li>
+                    <li><a href="#enterprise">🏢 Enterprise Features</a></li>
+                    <li><a href="#keyboard">⌨️ Keyboard Shortcuts</a></li>
+                    <li><a href="#troubleshooting">🔧 Troubleshooting</a></li>
+                    <li><a href="#advanced">🚀 Advanced Usage</a></li>
+                    <li><a href="#support">💬 Support</a></li>
+                </ul>
+            </div>
+            
+            <section id="quick-start" class="section">
+                <h2>🚀 Quick Start</h2>
+                
+                <div class="card success">
+                    <h3>New to MDViewer? Start here!</h3>
+                    <p><strong>Get up and running in under 2 minutes:</strong></p>
+                    <ol>
+                        <li>Download the <strong>MSI Installer</strong> (recommended for most users)</li>
+                        <li>Run the installer and follow the setup wizard</li>
+                        <li>Open any <code>.md</code> file by double-clicking or using "Open with MDViewer"</li>
+                        <li>Explore the navigation footer and try the built-in editor with <strong>Ctrl+E</strong></li>
+                    </ol>
+                </div>
+                
+                <h3>Download Links</h3>
+                <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">📦 MSI Installer (2.1 MB)</a>
+                <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-SelfContained.exe" class="download-btn secondary">🚀 Portable Version (47.8 MB)</a>
+                
+                <h3>First Run</h3>
+                <p>After installation, MDViewer will:</p>
+                <ul>
+                    <li>🔗 <strong>Associate with .md files</strong> - Right-click any markdown file to see "Open with MDViewer"</li>
+                    <li>📁 <strong>Remember recent files</strong> - Access via File menu or drag-and-drop</li>
+                    <li>⚙️ <strong>Save your preferences</strong> - Window size, zoom level, and settings persist</li>
+                    <li>🧭 <strong>Auto-detect repositories</strong> - Intelligent navigation for documentation projects</li>
+                </ul>
+            </section>
+            
+            <section id="installation" class="section">
+                <h2>💿 Installation Guide</h2>
+                
+                <h3>Choose Your Installation Method</h3>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Best For</th>
+                            <th>Size</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>MSI Installer</strong></td>
+                            <td>Most users, permanent installation</td>
+                            <td>2.1 MB</td>
+                            <td>.NET 8 runtime</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Self-Contained Portable</strong></td>
+                            <td>No admin rights, temporary use</td>
+                            <td>47.8 MB</td>
+                            <td>None - includes runtime</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Portable ZIP</strong></td>
+                            <td>Manual deployment, servers</td>
+                            <td>68.5 MB</td>
+                            <td>None - includes runtime</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Silent Install Script</strong></td>
+                            <td>Enterprise deployment</td>
+                            <td>1 KB</td>
+                            <td>Admin rights, downloads MSI</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>MSI Installation (Recommended)</h3>
+                <div class="card">
+                    <h4>Step-by-Step Instructions:</h4>
+                    <ol>
+                        <li><strong>Download:</strong> <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">MDViewer-v1.4.4-Setup.msi</a></li>
+                        <li><strong>Run:</strong> Double-click the downloaded MSI file</li>
+                        <li><strong>Install:</strong> Click "Next" through the installation wizard</li>
+                        <li><strong>Complete:</strong> Launch from Start Menu or desktop shortcut</li>
+                    </ol>
+                    
+                    <p><strong>What gets installed:</strong></p>
+                    <ul>
+                        <li>✅ MDViewer application in Program Files</li>
+                        <li>✅ Start Menu shortcuts and desktop icon</li>
+                        <li>✅ File associations for .md and .markdown files</li>
+                        <li>✅ Context menu "Open with MDViewer" option</li>
+                        <li>✅ Uninstaller in Add/Remove Programs</li>
+                    </ul>
+                </div>
+                
+                <h3>Portable Installation</h3>
+                <div class="card info">
+                    <h4>Self-Extracting Portable (.exe)</h4>
+                    <p>Perfect for users without admin rights or temporary installations.</p>
+                    <ol>
+                        <li>Download: <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-SelfContained.exe" class="download-btn secondary">MDViewer-v1.4.4-SelfContained.exe</a></li>
+                        <li>Run the executable to extract files</li>
+                        <li>Launch <code>MDViewer.exe</code> from the extracted folder</li>
+                        <li>Optionally pin to taskbar or create shortcuts</li>
+                    </ol>
+                </div>
+                
+                <h3>Enterprise Silent Installation</h3>
+                <div class="card">
+                    <h4>Automated Deployment</h4>
+                    <p>For system administrators deploying across multiple machines:</p>
+                    
+                    <pre><code># Download and run the silent installer
+Invoke-WebRequest -Uri "https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/Install-MDViewer-v1.4.4.bat" -OutFile "Install-MDViewer.bat"
+.\Install-MDViewer.bat
+
+# Or install MSI directly with silent parameters
+msiexec /i MDViewer-v1.4.4-Setup.msi /quiet /norestart</code></pre>
+                    
+                    <p><strong>Group Policy deployment:</strong> The MSI supports standard Windows deployment via Group Policy Software Installation.</p>
+                </div>
+                
+                <h3>Verification</h3>
+                <p>Verify your download integrity using SHA256 checksums:</p>
+                <pre><code># PowerShell verification
+Get-FileHash .\MDViewer-v1.4.4-Setup.msi -Algorithm SHA256
+# Expected: 2F13022D7665BD8F852BA69DF569F86A9D89F3DC89FBC4AEA4D2255856CC669C</code></pre>
+                
+                <p>📋 Complete checksums available: <a href="https://github.com/MDViewer-App/mdviewer-core/releases/tag/v1.4.4">GitHub Releases Page</a></p>
+            </section>
+            
+            <section id="features" class="section">
+                <h2>✨ Feature Overview</h2>
+                
+                <h3>Core Capabilities</h3>
+                
+                <div class="card">
+                    <h4>🧭 Smart Navigation System</h4>
+                    <ul>
+                        <li><strong>Repository Detection:</strong> Automatically finds your documentation root</li>
+                        <li><strong>Breadcrumb Navigation:</strong> Clear path showing where you are</li>
+                        <li><strong>Related Files:</strong> Shows other markdown files in the same directory</li>
+                        <li><strong>Subdirectory Links:</strong> Easy access to nested documentation</li>
+                        <li><strong>Intelligent Linking:</strong> Automatically resolves relative links between files</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>✏️ Built-in Text Editor</h4>
+                    <ul>
+                        <li><strong>Full Menu Support:</strong> New, Open, Save, Save As operations</li>
+                        <li><strong>Find & Replace:</strong> Powerful search with regex support</li>
+                        <li><strong>Word Wrap:</strong> Toggle for optimal viewing</li>
+                        <li><strong>Live Preview:</strong> See changes instantly in the viewer</li>
+                        <li><strong>External Editor Integration:</strong> Configure your preferred editor (VS Code, etc.)</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>📄 Professional Export</h4>
+                    <ul>
+                        <li><strong>PDF Export:</strong> High-quality PDF generation with proper formatting</li>
+                        <li><strong>Word Export:</strong> Microsoft Word (.docx) documents</li>
+                        <li><strong>Print Support:</strong> Direct printing from the viewer</li>
+                        <li><strong>Progress Tracking:</strong> Real-time status during export operations</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>🏢 Enterprise Features</h4>
+                    <ul>
+                        <li><strong>Documentation Hub:</strong> Team-centric organization and management</li>
+                        <li><strong>Category Management:</strong> Organize documents by department or project</li>
+                        <li><strong>Priority System:</strong> Mark high-priority documentation</li>
+                        <li><strong>Search & Filter:</strong> Find documents quickly across large repositories</li>
+                        <li><strong>Dashboard Generation:</strong> Create overview pages for teams</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="navigation" class="section">
+                <h2>🧭 Navigation System</h2>
+                
+                <h3>How Repository Detection Works</h3>
+                <p>MDViewer automatically detects your documentation structure by:</p>
+                <ol>
+                    <li><strong>Git Repository Detection:</strong> Looks for .git folders to identify project roots</li>
+                    <li><strong>Markdown File Scanning:</strong> Walks up directories to find markdown files</li>
+                    <li><strong>Directory Analysis:</strong> Identifies documentation hierarchies</li>
+                </ol>
+                
+                <div class="card info">
+                    <h4>Navigation Footer Elements</h4>
+                    <ul>
+                        <li><strong>📍 Current Path:</strong> Shows the physical file location</li>
+                        <li><strong>🏠 Navigation Root:</strong> Link back to documentation root</li>
+                        <li><strong>⬆️ Parent Directory:</strong> Go up one level in the hierarchy</li>
+                        <li><strong>📄 Related Files:</strong> Other markdown files in the same directory</li>
+                        <li><strong>📁 Subdirectories:</strong> Folders containing more documentation</li>
+                    </ul>
+                </div>
+                
+                <h3>Advanced Navigation</h3>
+                <h4>Link Resolution</h4>
+                <p>MDViewer intelligently handles:</p>
+                <ul>
+                    <li><strong>Relative Links:</strong> <code>[Link](../folder/file.md)</code> - Resolves relative to current file</li>
+                    <li><strong>Absolute Links:</strong> <code>[Link](/docs/api.md)</code> - Resolves from repository root</li>
+                    <li><strong>Directory Links:</strong> <code>[Folder](./subfolder/)</code> - Opens index or first markdown file</li>
+                    <li><strong>Anchor Links:</strong> <code>[Section](#heading)</code> - Scrolls to headings within files</li>
+                </ul>
+                
+                <h4>Image Resolution</h4>
+                <p>Images are properly resolved using:</p>
+                <ul>
+                    <li><strong>Repository Base URLs:</strong> Ensures images load correctly from any file</li>
+                    <li><strong>Relative Path Support:</strong> <code>![Image](./images/diagram.png)</code></li>
+                    <li><strong>Git Integration:</strong> Detects repository root for absolute image paths</li>
+                </ul>
+            </section>
+            
+            <section id="editor" class="section">
+                <h2>✏️ Built-in Editor</h2>
+                
+                <h3>Opening the Editor</h3>
+                <ul>
+                    <li><strong>Keyboard:</strong> Press <code>Ctrl+E</code> from the viewer</li>
+                    <li><strong>Menu:</strong> Tools → Open Editor</li>
+                    <li><strong>Context Menu:</strong> Right-click and select "Edit"</li>
+                </ul>
+                
+                <h3>Editor Features</h3>
+                
+                <div class="card">
+                    <h4>File Operations</h4>
+                    <ul>
+                        <li><strong>New:</strong> <code>Ctrl+N</code> - Create new markdown document</li>
+                        <li><strong>Open:</strong> <code>Ctrl+O</code> - Open existing file</li>
+                        <li><strong>Save:</strong> <code>Ctrl+S</code> - Save current document</li>
+                        <li><strong>Save As:</strong> <code>Ctrl+Shift+S</code> - Save with new name/location</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Editing Tools</h4>
+                    <ul>
+                        <li><strong>Find:</strong> <code>Ctrl+F</code> - Search within document</li>
+                        <li><strong>Replace:</strong> <code>Ctrl+H</code> - Find and replace text</li>
+                        <li><strong>Word Wrap:</strong> Toggle text wrapping for long lines</li>
+                        <li><strong>Font Settings:</strong> Customize editor appearance</li>
+                    </ul>
+                </div>
+                
+                <h3>External Editor Integration</h3>
+                <p>Configure your preferred external editor:</p>
+                <ol>
+                    <li>Go to <strong>Settings → External Editor</strong></li>
+                    <li>Choose from popular editors or set custom path</li>
+                    <li>Use <code>Ctrl+Shift+E</code> to open current file in external editor</li>
+                </ol>
+                
+                <div class="card">
+                    <h4>Supported External Editors</h4>
+                    <ul>
+                        <li><strong>Visual Studio Code:</strong> Full markdown support with extensions</li>
+                        <li><strong>Notepad++:</strong> Lightweight with syntax highlighting</li>
+                        <li><strong>Sublime Text:</strong> Advanced editing features</li>
+                        <li><strong>Custom Editor:</strong> Any editor that accepts command-line file arguments</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="export" class="section">
+                <h2>📄 Export Features</h2>
+                
+                <h3>Export Options</h3>
+                
+                <div class="card">
+                    <h4>PDF Export</h4>
+                    <ul>
+                        <li><strong>Trigger:</strong> <code>Ctrl+P</code> or File → Export to PDF</li>
+                        <li><strong>Quality:</strong> High-resolution output suitable for printing</li>
+                        <li><strong>Formatting:</strong> Preserves all markdown styling and layout</li>
+                        <li><strong>Progress:</strong> Real-time status with cancellation support</li>
+                    </ul>
+                    
+                    <p><strong>Technical Details:</strong></p>
+                    <ul>
+                        <li>Uses Chromium/WebView2 for consistent rendering</li>
+                        <li>Supports embedded images and styling</li>
+                        <li>Automatic page breaks and margins</li>
+                        <li>Export location defaults to same directory as source file</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Word Export</h4>
+                    <ul>
+                        <li><strong>Trigger:</strong> File → Export to Word</li>
+                        <li><strong>Format:</strong> Microsoft Word (.docx) documents</li>
+                        <li><strong>Compatibility:</strong> Works with Word 2016 and later</li>
+                        <li><strong>Elements:</strong> Headings, lists, tables, and basic formatting preserved</li>
+                    </ul>
+                    
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>PowerShell execution policy allows scripts</li>
+                        <li>Pandoc automatically downloaded if needed</li>
+                        <li>Temporary file handling for conversion process</li>
+                    </ul>
+                </div>
+                
+                <h3>Export Troubleshooting</h3>
+                
+                <div class="card warning">
+                    <h4>Common Issues</h4>
+                    <ul>
+                        <li><strong>PDF hanging:</strong> Check for popup blockers or WebView2 permissions</li>
+                        <li><strong>Word export failing:</strong> Verify PowerShell execution policy: <code>Set-ExecutionPolicy RemoteSigned</code></li>
+                        <li><strong>Missing images:</strong> Ensure images use relative paths or are in accessible locations</li>
+                        <li><strong>Large files:</strong> Export may take longer for documents with many images</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="enterprise" class="section">
+                <h2>🏢 Enterprise Features</h2>
+                
+                <h3>Documentation Hub</h3>
+                <p>The Documentation Hub provides enterprise-grade document management:</p>
+                
+                <div class="card">
+                    <h4>Accessing the Documentation Hub</h4>
+                    <ul>
+                        <li><strong>Keyboard:</strong> <code>Ctrl+D</code></li>
+                        <li><strong>Menu:</strong> Tools → Documentation Hub</li>
+                        <li><strong>Toolbar:</strong> Click the Documentation Hub icon</li>
+                    </ul>
+                </div>
+                
+                <h3>Hub Features</h3>
+                
+                <div class="card">
+                    <h4>Category Management</h4>
+                    <ul>
+                        <li><strong>Organizational Structure:</strong> Create categories like "API Docs", "User Guides", "SOPs"</li>
+                        <li><strong>Nested Categories:</strong> Support for sub-categories and complex hierarchies</li>
+                        <li><strong>Color Coding:</strong> Visual identification for different document types</li>
+                        <li><strong>Access Control:</strong> Mark categories as public or restricted</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Document Organization</h4>
+                    <ul>
+                        <li><strong>Priority Levels:</strong> High, Medium, Low priority assignments</li>
+                        <li><strong>Quick Access:</strong> Pin frequently used documents</li>
+                        <li><strong>Search & Filter:</strong> Find documents across all categories</li>
+                        <li><strong>Recent Activity:</strong> Track recently accessed documents</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Team Coordination</h4>
+                    <ul>
+                        <li><strong>Dashboard Generation:</strong> Create team overview pages</li>
+                        <li><strong>Documentation Inventory:</strong> Track all team documents</li>
+                        <li><strong>Standard Templates:</strong> Incident response, API documentation, etc.</li>
+                        <li><strong>Export Coordination:</strong> Bulk export for team distributions</li>
+                    </ul>
+                </div>
+                
+                <h3>Enterprise Deployment</h3>
+                
+                <div class="card">
+                    <h4>Silent Installation for Teams</h4>
+                    <pre><code># PowerShell deployment script
+$installerUrl = "https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi"
+$installerPath = "$env:TEMP\MDViewer-Setup.msi"
+
+# Download installer
+Invoke-WebRequest -Uri $installerUrl -OutFile $installerPath
+
+# Silent install
+Start-Process msiexec.exe -ArgumentList "/i `"$installerPath`" /quiet /norestart" -Wait
+
+# Cleanup
+Remove-Item $installerPath -Force</code></pre>
+                </div>
+                
+                <div class="card">
+                    <h4>Group Policy Configuration</h4>
+                    <ul>
+                        <li><strong>MSI Deployment:</strong> Use Software Installation in Group Policy</li>
+                        <li><strong>Registry Settings:</strong> Pre-configure external editor preferences</li>
+                        <li><strong>File Associations:</strong> Ensure consistent .md file handling</li>
+                        <li><strong>Update Management:</strong> Control update notifications via registry</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="keyboard" class="section">
+                <h2>⌨️ Keyboard Shortcuts</h2>
+                
+                <h3>Essential Shortcuts</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Shortcut</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Open File</strong></td>
+                            <td><code>Ctrl+O</code></td>
+                            <td>Open markdown file dialog</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Open Editor</strong></td>
+                            <td><code>Ctrl+E</code></td>
+                            <td>Launch built-in text editor</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Documentation Hub</strong></td>
+                            <td><code>Ctrl+D</code></td>
+                            <td>Open enterprise documentation hub</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Refresh</strong></td>
+                            <td><code>F5</code></td>
+                            <td>Reload current document</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Print/Export PDF</strong></td>
+                            <td><code>Ctrl+P</code></td>
+                            <td>Export current document to PDF</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Zoom and View Controls</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Shortcut</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Zoom In</strong></td>
+                            <td><code>Ctrl++</code></td>
+                            <td>Increase content zoom level</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zoom Out</strong></td>
+                            <td><code>Ctrl+-</code></td>
+                            <td>Decrease content zoom level</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reset Zoom</strong></td>
+                            <td><code>Ctrl+0</code></td>
+                            <td>Return to 100% zoom level</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Developer Tools</strong></td>
+                            <td><code>F12</code></td>
+                            <td>Open WebView2 developer tools</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Editor Shortcuts</h3>
+                <p>When the built-in editor is active:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Shortcut</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>New File</strong></td>
+                            <td><code>Ctrl+N</code></td>
+                            <td>Create new markdown document</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Save</strong></td>
+                            <td><code>Ctrl+S</code></td>
+                            <td>Save current document</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Save As</strong></td>
+                            <td><code>Ctrl+Shift+S</code></td>
+                            <td>Save with new name or location</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Find</strong></td>
+                            <td><code>Ctrl+F</code></td>
+                            <td>Search within document</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Replace</strong></td>
+                            <td><code>Ctrl+H</code></td>
+                            <td>Find and replace text</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="card info">
+                    <h4>📝 Note on Keyboard Shortcuts</h4>
+                    <p>MDViewer uses enhanced keyboard handling to ensure shortcuts work even when the WebView2 control has focus. All shortcuts are processed at the form level for consistent behavior.</p>
+                </div>
+            </section>
+            
+            <section id="troubleshooting" class="section">
+                <h2>🔧 Troubleshooting</h2>
+                
+                <h3>Common Issues</h3>
+                
+                <div class="card warning">
+                    <h4>WebView2 Issues</h4>
+                    <p><strong>Problem:</strong> MDViewer fails to start or shows blank content</p>
+                    <p><strong>Solutions:</strong></p>
+                    <ul>
+                        <li>Install WebView2 Runtime manually: <a href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/">Download from Microsoft</a></li>
+                        <li>Run Windows Update to get latest WebView2 version</li>
+                        <li>Check Windows version: Requires Windows 10 version 1809 or later</li>
+                        <li>Temporarily disable antivirus to test if it's blocking WebView2</li>
+                    </ul>
+                </div>
+                
+                <div class="card warning">
+                    <h4>Threading Errors (Fixed in v1.4.4)</h4>
+                    <p><strong>Problem:</strong> "CoreWebView2 can only be accessed from the UI thread" error</p>
+                    <p><strong>Solution:</strong> Update to MDViewer v1.4.4 or later - this critical issue has been resolved.</p>
+                </div>
+                
+                <div class="card warning">
+                    <h4>File Association Issues</h4>
+                    <p><strong>Problem:</strong> Right-click "Open with MDViewer" option missing</p>
+                    <p><strong>Solutions:</strong></p>
+                    <ul>
+                        <li>Reinstall using the MSI installer with administrator privileges</li>
+                        <li>Manually associate .md files: Right-click → Properties → Open with → Choose another app</li>
+                        <li>Run <code>Install-MDViewer-v1.4.4.bat</code> as administrator</li>
+                    </ul>
+                </div>
+                
+                <div class="card warning">
+                    <h4>Export Problems</h4>
+                    <p><strong>PDF Export Issues:</strong></p>
+                    <ul>
+                        <li>Ensure WebView2 has permission to save files</li>
+                        <li>Check available disk space in target directory</li>
+                        <li>Disable popup blockers or security software temporarily</li>
+                    </ul>
+                    
+                    <p><strong>Word Export Issues:</strong></p>
+                    <ul>
+                        <li>Set PowerShell execution policy: <code>Set-ExecutionPolicy RemoteSigned</code></li>
+                        <li>Ensure internet connection for Pandoc download</li>
+                        <li>Check temporary directory permissions</li>
+                    </ul>
+                </div>
+                
+                <h3>Performance Issues</h3>
+                
+                <div class="card">
+                    <h4>Large Document Handling</h4>
+                    <ul>
+                        <li><strong>Memory Usage:</strong> Large documents (>50MB) may require additional RAM</li>
+                        <li><strong>Image Loading:</strong> Many images can slow initial rendering</li>
+                        <li><strong>Complex Tables:</strong> Large tables may impact scrolling performance</li>
+                        <li><strong>Optimization:</strong> Break large documents into smaller, linked files</li>
+                    </ul>
+                </div>
+                
+                <h3>Getting Debug Information</h3>
+                
+                <div class="card info">
+                    <h4>Developer Tools</h4>
+                    <p>Press <code>F12</code> to open WebView2 developer tools for:</p>
+                    <ul>
+                        <li><strong>Console Errors:</strong> JavaScript errors or warnings</li>
+                        <li><strong>Network Issues:</strong> Failed image or resource loading</li>
+                        <li><strong>Performance:</strong> Rendering and memory usage analysis</li>
+                        <li><strong>DOM Inspection:</strong> Examine generated HTML structure</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Log Files</h4>
+                    <p>MDViewer creates log files in:</p>
+                    <ul>
+                        <li><strong>Windows 10/11:</strong> <code>%APPDATA%\MDViewer\Logs\</code></li>
+                        <li><strong>Portable Version:</strong> <code>Logs\</code> folder next to executable</li>
+                    </ul>
+                    
+                    <p>Include these logs when reporting issues for faster support.</p>
+                </div>
+            </section>
+            
+            <section id="advanced" class="section">
+                <h2>🚀 Advanced Usage</h2>
+                
+                <h3>Command Line Interface</h3>
+                
+                <div class="card">
+                    <h4>Basic Usage</h4>
+                    <pre><code># Open specific file
+MDViewer.exe "C:\Docs\README.md"
+
+# Open with specific zoom level
+MDViewer.exe --zoom=150 "document.md"
+
+# Open in read-only mode
+MDViewer.exe --readonly "sensitive-doc.md"</code></pre>
+                </div>
+                
+                <h3>Configuration Files</h3>
+                
+                <div class="card">
+                    <h4>Settings Location</h4>
+                    <ul>
+                        <li><strong>User Settings:</strong> <code>%APPDATA%\MDViewer\settings.json</code></li>
+                        <li><strong>Portable Settings:</strong> <code>settings.json</code> next to executable</li>
+                        <li><strong>Recent Files:</strong> <code>recent-files.json</code> in same directory</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Example Settings Configuration</h4>
+                    <pre><code>{
+  "WindowState": {
+    "Width": 1200,
+    "Height": 800,
+    "Left": 100,
+    "Top": 100,
+    "Maximized": false
+  },
+  "ZoomFactor": 1.0,
+  "ExternalEditor": "C:\\Program Files\\Microsoft VS Code\\Code.exe",
+  "Theme": "GitHub",
+  "AutoSaveInterval": 30,
+  "ShowLineNumbers": true
+}</code></pre>
+                </div>
+                
+                <h3>Custom CSS Styling</h3>
+                
+                <div class="card">
+                    <h4>Theme Customization</h4>
+                    <p>Create custom CSS files in <code>%APPDATA%\MDViewer\Themes\</code>:</p>
+                    <pre><code>/* custom-theme.css */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #007bff;
+    border-bottom: 2px solid #e9ecef;
+}
+
+code {
+    background-color: #e9ecef;
+    color: #d63384;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+}</code></pre>
+                </div>
+                
+                <h3>Integration with Development Tools</h3>
+                
+                <div class="card">
+                    <h4>Git Integration</h4>
+                    <ul>
+                        <li><strong>Repository Detection:</strong> Automatic .git folder scanning</li>
+                        <li><strong>Base URL Resolution:</strong> Proper image path handling</li>
+                        <li><strong>Relative Link Support:</strong> Works with Git repository structures</li>
+                        <li><strong>Branch-Aware Navigation:</strong> Respects current working directory</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Documentation Workflows</h4>
+                    <ul>
+                        <li><strong>Watch Mode:</strong> Auto-refresh when files change (F5 or manual)</li>
+                        <li><strong>Multi-Repository:</strong> Handle multiple documentation projects</li>
+                        <li><strong>Template System:</strong> Create standard document templates</li>
+                        <li><strong>Batch Operations:</strong> Process multiple files for export</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="support" class="section">
+                <h2>💬 Support</h2>
+                
+                <h3>Getting Help</h3>
+                
+                <div class="card">
+                    <h4>📧 Contact Information</h4>
+                    <ul>
+                        <li><strong>General Support:</strong> support@mdviewer.app</li>
+                        <li><strong>Enterprise Inquiries:</strong> enterprise@mdviewer.app</li>
+                        <li><strong>Bug Reports:</strong> Use GitHub Issues (when repository is public)</li>
+                        <li><strong>Feature Requests:</strong> Submit via email with detailed use cases</li>
+                    </ul>
+                </div>
+                
+                <div class="card success">
+                    <h4>📝 When Reporting Issues</h4>
+                    <p>Please include the following information:</p>
+                    <ul>
+                        <li><strong>MDViewer Version:</strong> Check Help → About MDViewer</li>
+                        <li><strong>Windows Version:</strong> Run <code>winver</code> to get exact version</li>
+                        <li><strong>File Information:</strong> File size, markdown complexity</li>
+                        <li><strong>Error Messages:</strong> Exact text of any error dialogs</li>
+                        <li><strong>Steps to Reproduce:</strong> Detailed sequence of actions</li>
+                        <li><strong>Log Files:</strong> From <code>%APPDATA%\MDViewer\Logs\</code></li>
+                    </ul>
+                </div>
+                
+                <h3>Version Information</h3>
+                
+                <div class="card info">
+                    <h4>Current Version: 1.4.4</h4>
+                    <ul>
+                        <li><strong>Release Date:</strong> June 23, 2025</li>
+                        <li><strong>Critical Fix:</strong> WebView2 threading issues resolved</li>
+                        <li><strong>Stability:</strong> Production-ready for enterprise use</li>
+                        <li><strong>Compatibility:</strong> Windows 10 version 1809+, .NET 8</li>
+                    </ul>
+                </div>
+                
+                <h3>Update Information</h3>
+                
+                <div class="card">
+                    <h4>Staying Current</h4>
+                    <ul>
+                        <li><strong>Automatic Updates:</strong> MSI installations check for updates weekly</li>
+                        <li><strong>Manual Updates:</strong> Download new versions from mdviewer.app</li>
+                        <li><strong>Portable Updates:</strong> Replace executable with new version</li>
+                        <li><strong>Settings Preservation:</strong> All user preferences carry forward</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>🔐 Security Updates</h4>
+                    <p>Security patches are released immediately when identified. Always keep MDViewer updated to the latest version for:</p>
+                    <ul>
+                        <li>✅ Latest WebView2 security patches</li>
+                        <li>✅ Vulnerability fixes in dependencies</li>
+                        <li>✅ Enhanced file handling security</li>
+                        <li>✅ Protection against malicious markdown content</li>
+                    </ul>
+                </div>
+                
+                <h3>Community Resources</h3>
+                
+                <div class="card">
+                    <h4>Documentation and Examples</h4>
+                    <ul>
+                        <li><strong>Sample Documents:</strong> Download example markdown files showing MDViewer features</li>
+                        <li><strong>Template Library:</strong> Ready-to-use templates for common documentation types</li>
+                        <li><strong>Best Practices:</strong> Guides for organizing large documentation projects</li>
+                        <li><strong>Video Tutorials:</strong> Step-by-step guides for advanced features</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <footer style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); text-align: center; padding: 2rem 0; margin-top: 2rem; border-radius: 20px 20px 0 0;">
+        <div class="container">
+            <p style="color: rgba(255, 255, 255, 0.8); margin: 0;">
+                &copy; 2025 MDViewer. Built for Windows documentation professionals. • 
+                <a href="index.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Home</a> • 
+                <a href="https://github.com/MDViewer-App/mdviewer-core/releases/tag/v1.4.4" style="color: rgba(255,255,255,0.8); text-decoration: none;">GitHub Releases</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
