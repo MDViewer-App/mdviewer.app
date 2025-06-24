@@ -374,30 +374,15 @@
         
         <section id="download" class="download-section">
             <div class="section-header">
-                <h2 style="color: var(--text-dark);">Download MDViewer v1.4.4</h2>
-                <p style="color: var(--text-light);">🚨 <strong>Critical Update:</strong> Fixes WebView2 threading issues for improved stability</p>
+                <h2 style="color: var(--text-dark);">Download MDViewer</h2>
+                <p style="color: var(--text-light);" id="download-status">🔄 Checking for latest release...</p>
             </div>
             
-            <div class="download-grid">
-                <div class="download-card recommended">
-                    <h3>🏢 MSI Installer</h3>
-                    <div class="size">2.1 MB</div>
-                    <p>Professional Windows installer with Start Menu integration, file associations, and automatic updates.</p>
-                    <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">Download MSI</a>
-                </div>
-                
-                <div class="download-card">
-                    <h3>📦 Portable ZIP</h3>
-                    <div class="size">~400 MB</div>
-                    <p>Framework-dependent portable version. Extract and run MDViewer.exe. Requires .NET 8 runtime.</p>
-                    <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Portable.zip" class="download-btn secondary">Download Portable</a>
-                </div>
-                
-                <div class="download-card">
-                    <h3>🤖 Silent Install</h3>
-                    <div class="size">1 KB</div>
-                    <p>Automated deployment script for enterprise environments and system administrators.</p>
-                    <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/Install-MDViewer-v1.4.4.bat" class="download-btn secondary">Download Script</a>
+            <div class="download-grid" id="download-grid">
+                <!-- Download options will be populated by JavaScript -->
+                <div class="download-card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                    <h3>🔄 Loading Download Options...</h3>
+                    <p>Please wait while we fetch the latest release information.</p>
                 </div>
             </div>
         </section>
@@ -467,5 +452,94 @@
             <p>&copy; 2025 MDViewer. Built for Windows documentation professionals. • <a href="docs.html">Documentation</a> • <a href="https://github.com/MDViewer-App/mdviewer.app/releases">GitHub Releases</a></p>
         </footer>
     </div>
+    <script>
+        async function loadDownloadOptions() {
+            const downloadGrid = document.getElementById('download-grid');
+            const statusText = document.getElementById('download-status');
+            
+            try {
+                // Try to fetch the latest release from GitHub API
+                const response = await fetch('https://api.github.com/repos/MDViewer-App/mdviewer.app/releases/latest');
+                
+                if (response.ok) {
+                    const release = await response.json();
+                    displayDownloadOptions(release);
+                } else {
+                    throw new Error('No releases available');
+                }
+            } catch (error) {
+                console.log('No releases found, showing coming soon message');
+                displayComingSoon();
+            }
+        }
+        
+        function displayDownloadOptions(release) {
+            const downloadGrid = document.getElementById('download-grid');
+            const statusText = document.getElementById('download-status');
+            const version = release.tag_name;
+            
+            statusText.innerHTML = `🚀 <strong>Latest Release:</strong> ${version} - ${release.name}`;
+            
+            // Find the assets we're looking for
+            const msiAsset = release.assets.find(asset => asset.name.includes('Setup.msi'));
+            const portableAsset = release.assets.find(asset => asset.name.includes('Portable.zip'));
+            const scriptAsset = release.assets.find(asset => asset.name.includes('Install-') && asset.name.endsWith('.bat'));
+            
+            downloadGrid.innerHTML = `
+                <div class="download-card recommended">
+                    <h3>🏢 MSI Installer</h3>
+                    <div class="size">${msiAsset ? formatFileSize(msiAsset.size) : '~2 MB'}</div>
+                    <p>Professional Windows installer with Start Menu integration, file associations, and automatic updates.</p>
+                    <a href="${msiAsset ? msiAsset.browser_download_url : '#'}" class="download-btn" ${!msiAsset ? 'onclick="return false;"' : ''}>Download MSI</a>
+                </div>
+                
+                <div class="download-card">
+                    <h3>📦 Portable ZIP</h3>
+                    <div class="size">${portableAsset ? formatFileSize(portableAsset.size) : '~400 MB'}</div>
+                    <p>Framework-dependent portable version. Extract and run MDViewer.exe. Requires .NET 8 runtime.</p>
+                    <a href="${portableAsset ? portableAsset.browser_download_url : '#'}" class="download-btn secondary" ${!portableAsset ? 'onclick="return false;"' : ''}>Download Portable</a>
+                </div>
+                
+                <div class="download-card">
+                    <h3>🤖 Silent Install</h3>
+                    <div class="size">${scriptAsset ? formatFileSize(scriptAsset.size) : '~1 KB'}</div>
+                    <p>Automated deployment script for enterprise environments and system administrators.</p>
+                    <a href="${scriptAsset ? scriptAsset.browser_download_url : '#'}" class="download-btn secondary" ${!scriptAsset ? 'onclick="return false;"' : ''}>Download Script</a>
+                </div>
+            `;
+        }
+        
+        function displayComingSoon() {
+            const downloadGrid = document.getElementById('download-grid');
+            const statusText = document.getElementById('download-status');
+            
+            statusText.innerHTML = '🔧 <strong>Coming Soon:</strong> Downloads are being prepared and will be available shortly.';
+            
+            downloadGrid.innerHTML = `
+                <div class="download-card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+                    <h3>🚧 Downloads Coming Soon</h3>
+                    <p style="margin-bottom: 2rem;">We're currently preparing the release files. Downloads will be available shortly.</p>
+                    <p style="color: var(--text-light); font-size: 0.9rem;">In the meantime, you can:</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                        <a href="docs.html" class="download-btn secondary" style="width: auto; min-width: 150px;">Read Documentation</a>
+                        <a href="https://github.com/MDViewer-App/mdviewer-core" class="download-btn secondary" style="width: auto; min-width: 150px;" target="_blank">View Source Code</a>
+                        <a href="pricing.html" class="download-btn secondary" style="width: auto; min-width: 150px;">Learn About Support</a>
+                    </div>
+                    <p style="margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">Check back soon or follow our <a href="https://github.com/MDViewer-App/mdviewer.app" target="_blank" style="color: var(--primary-color);">GitHub repository</a> for updates.</p>
+                </div>
+            `;
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+        }
+        
+        // Load download options when the page loads
+        document.addEventListener('DOMContentLoaded', loadDownloadOptions);
+    </script>
 </body>
 </html>
