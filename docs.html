@@ -345,7 +345,7 @@
                 
                 <h3>Download Links</h3>
                 <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">📦 MSI Installer (2.1 MB)</a>
-                <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-SelfContained.exe" class="download-btn secondary">🚀 Portable Version (47.8 MB)</a>
+                <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Portable.zip" class="download-btn secondary">📦 Portable Version (~400 MB)</a>
                 
                 <h3>First Run</h3>
                 <p>After installation, MDViewer will:</p>
@@ -379,16 +379,10 @@
                             <td>.NET 8 runtime</td>
                         </tr>
                         <tr>
-                            <td><strong>Self-Contained Portable</strong></td>
-                            <td>No admin rights, temporary use</td>
-                            <td>47.8 MB</td>
-                            <td>None - includes runtime</td>
-                        </tr>
-                        <tr>
                             <td><strong>Portable ZIP</strong></td>
-                            <td>Manual deployment, servers</td>
-                            <td>68.5 MB</td>
-                            <td>None - includes runtime</td>
+                            <td>No admin rights, development environments</td>
+                            <td>~400 MB</td>
+                            <td>.NET 8 runtime required</td>
                         </tr>
                         <tr>
                             <td><strong>Silent Install Script</strong></td>
@@ -421,11 +415,12 @@
                 
                 <h3>Portable Installation</h3>
                 <div class="card info">
-                    <h4>Self-Extracting Portable (.exe)</h4>
-                    <p>Perfect for users without admin rights or temporary installations.</p>
+                    <h4>Portable ZIP Archive</h4>
+                    <p>Perfect for users without admin rights or development environments.</p>
                     <ol>
-                        <li>Download: <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-SelfContained.exe" class="download-btn secondary">MDViewer-v1.4.4-SelfContained.exe</a></li>
-                        <li>Run the executable to extract files</li>
+                        <li>Download: <a href="https://github.com/MDViewer-App/mdviewer-core/releases/download/v1.4.4/MDViewer-v1.4.4-Portable.zip" class="download-btn secondary">MDViewer-v1.4.4-Portable.zip</a></li>
+                        <li>Extract the ZIP archive to desired location</li>
+                        <li>Ensure .NET 8 runtime is installed</li>
                         <li>Launch <code>MDViewer.exe</code> from the extracted folder</li>
                         <li>Optionally pin to taskbar or create shortcuts</li>
                     </ol>
