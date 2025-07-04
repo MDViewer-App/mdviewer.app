@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="MDViewer.exe" version="1.4.1.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="MDViewer.exe" version="1.4.1.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -135,22 +135,22 @@
       <dsig:DigestValue>bXXF00SIXenw4J8sy6KBlAgC0Ei/lcEoDBy3oZ4D/y0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="MDViewer.dll" size="211968">
+  <file name="MDViewer.dll" size="209408">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>kVJfiH5XHbEF7hw/Lloz83taSQud+s7kjJ+5/x93eEw=</dsig:DigestValue>
+      <dsig:DigestValue>WHOpN7vD45At9oBHfdjZ1b5OqI7vMi3yG/qEQZ+a5Xs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="MDViewer.exe" size="161792">
+  <file name="MDViewer.exe" size="159232">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>yUkmYzUhqHDEDulXljum7yx/GpsYnxizidCPYUYCsWc=</dsig:DigestValue>
+      <dsig:DigestValue>H27JsG99Krthmx77VarIOlrcAEtQaQcjrb++6Pqj83c=</dsig:DigestValue>
     </hash>
   </file>
   <file name="MDViewer.runtimeconfig.json" size="515">
