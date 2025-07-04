@@ -117,8 +117,8 @@
             margin-right: auto;
         }
         
-        /* Download Section */
-        .download-section {
+        /* Hero Features Section */
+        .hero-features {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 3rem 0;
@@ -127,14 +127,14 @@
             box-shadow: 0 8px 30px var(--shadow);
         }
         
-        .download-grid {
+        .hero-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin: 2rem 0;
         }
         
-        .download-card {
+        .hero-card {
             background: var(--white);
             padding: 2rem;
             border-radius: 15px;
@@ -144,75 +144,85 @@
             border: 2px solid transparent;
         }
         
-        .download-card:hover {
+        .hero-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px var(--shadow-hover);
             border-color: var(--primary-color);
         }
         
-        .download-card.recommended {
-            border-color: var(--primary-color);
-            position: relative;
-        }
-        
-        .download-card.recommended::before {
-            content: "RECOMMENDED";
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-gradient);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
-        .download-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-        
-        .download-card .size {
-            color: var(--text-light);
-            font-size: 0.9rem;
+        .hero-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
         }
         
-        .download-card p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+        .hero-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
         
-        .download-btn {
+        .hero-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(118, 75, 162, 0.05);
+            border-radius: 15px;
+        }
+        
+        .cta-section h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .cta-section p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
             display: inline-block;
-            background: var(--primary-gradient);
-            color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 2rem;
             text-decoration: none;
             border-radius: 25px;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
-            width: 100%;
+            min-width: 150px;
             text-align: center;
         }
         
-        .download-btn:hover {
+        .cta-btn.primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+        }
+        
+        .cta-btn.primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
         }
         
-        .download-btn.secondary {
+        .cta-btn.secondary {
             background: var(--white);
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
         }
         
-        .download-btn.secondary:hover {
+        .cta-btn.secondary:hover {
             background: var(--primary-color);
             color: white;
         }
@@ -361,7 +371,6 @@
             </div>
             <div class="nav-links">
                 <a href="#features">Features</a>
-                <a href="#download">Download</a>
                 <a href="#requirements">Requirements</a>
                 <a href="docs.html">Documentation</a>
                 <a href="pricing.html">Support</a>
@@ -378,17 +387,45 @@
             </div>
         </header>
         
-        <section id="download" class="download-section">
+        <!-- Hero Features Section -->
+        <section class="hero-features">
             <div class="section-header">
-                <h2 style="color: var(--text-dark);">Download MDViewer</h2>
-                <p style="color: var(--text-light);" id="download-status">🔄 Checking for latest release...</p>
+                <h2>Why Choose MDViewer?</h2>
+                <p>The professional solution for Windows documentation workflows</p>
             </div>
             
-            <div class="download-grid" id="download-grid">
-                <!-- Download options will be populated by JavaScript -->
-                <div class="download-card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                    <h3>🔄 Loading Download Options...</h3>
-                    <p>Please wait while we fetch the latest release information.</p>
+            <div class="hero-grid">
+                <div class="hero-card">
+                    <div class="hero-icon">🧭</div>
+                    <h3>Smart Navigation</h3>
+                    <p>Intelligent directory navigation with breadcrumbs and automatic linking</p>
+                </div>
+                
+                <div class="hero-card">
+                    <div class="hero-icon">✏️</div>
+                    <h3>Built-in Editor</h3>
+                    <p>Integrated markdown editor with full menu support and live preview</p>
+                </div>
+                
+                <div class="hero-card">
+                    <div class="hero-icon">📄</div>
+                    <h3>Professional Export</h3>
+                    <p>Export to PDF and Word formats with proper formatting preservation</p>
+                </div>
+                
+                <div class="hero-card">
+                    <div class="hero-icon">🏢</div>
+                    <h3>Enterprise Ready</h3>
+                    <p>Documentation hub with team-centric organization and search capabilities</p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h3>Ready to Transform Your Documentation Workflow?</h3>
+                <p>Get started with MDViewer today and experience professional markdown viewing on Windows</p>
+                <div class="cta-buttons">
+                    <a href="pricing.html" class="cta-btn primary">Get Started</a>
+                    <a href="docs.html" class="cta-btn secondary">Learn More</a>
                 </div>
             </div>
         </section>
@@ -458,93 +495,5 @@
             <p>&copy; 2025 MDViewer. Built for Windows documentation professionals. • <a href="docs.html">Documentation</a> • <a href="https://github.com/MDViewer-App/mdviewer.app/releases">GitHub Releases</a></p>
         </footer>
     </div>
-    <script>
-        async function loadDownloadOptions() {
-            const downloadGrid = document.getElementById('download-grid');
-            const statusText = document.getElementById('download-status');
-            
-            try {
-                // Try to fetch the latest release from GitHub API
-                const response = await fetch('https://api.github.com/repos/MDViewer-App/mdviewer.app/releases/latest');
-                
-                if (response.ok) {
-                    const release = await response.json();
-                    displayDownloadOptions(release);
-                } else {
-                    throw new Error('No releases available');
-                }
-            } catch (error) {
-                console.log('No releases found, showing coming soon message');
-                displayComingSoon();
-            }
-        }
-        
-        function displayDownloadOptions(release) {
-            const downloadGrid = document.getElementById('download-grid');
-            const statusText = document.getElementById('download-status');
-            const version = release.tag_name;
-            
-            statusText.innerHTML = `🚀 <strong>Latest Release:</strong> ${version} - ${release.name}`;
-            
-            // Find the assets we're looking for
-            const msiAsset = release.assets.find(asset => asset.name.includes('Setup.msi'));
-            const portableAsset = release.assets.find(asset => asset.name.includes('Portable.zip'));
-            const scriptAsset = release.assets.find(asset => asset.name.includes('Install-') && asset.name.endsWith('.bat'));
-            
-            downloadGrid.innerHTML = `
-                <div class="download-card recommended">
-                    <h3>🏢 MSI Installer</h3>
-                    <div class="size">${msiAsset ? formatFileSize(msiAsset.size) : '~2 MB'}</div>
-                    <p>Professional Windows installer with Start Menu integration, file associations, and automatic updates.</p>
-                    <a href="${msiAsset ? msiAsset.browser_download_url : '#'}" class="download-btn" ${!msiAsset ? 'onclick="return false;"' : ''}>Download MSI</a>
-                </div>
-                
-                <div class="download-card">
-                    <h3>📦 Portable ZIP</h3>
-                    <div class="size">${portableAsset ? formatFileSize(portableAsset.size) : '~400 MB'}</div>
-                    <p>Framework-dependent portable version. Extract and run MDViewer.exe. Requires .NET 8 runtime.</p>
-                    <a href="${portableAsset ? portableAsset.browser_download_url : '#'}" class="download-btn secondary" ${!portableAsset ? 'onclick="return false;"' : ''}>Download Portable</a>
-                </div>
-                
-                <div class="download-card">
-                    <h3>🤖 Silent Install</h3>
-                    <div class="size">${scriptAsset ? formatFileSize(scriptAsset.size) : '~1 KB'}</div>
-                    <p>Automated deployment script for enterprise environments and system administrators.</p>
-                    <a href="${scriptAsset ? scriptAsset.browser_download_url : '#'}" class="download-btn secondary" ${!scriptAsset ? 'onclick="return false;"' : ''}>Download Script</a>
-                </div>
-            `;
-        }
-        
-        function displayComingSoon() {
-            const downloadGrid = document.getElementById('download-grid');
-            const statusText = document.getElementById('download-status');
-            
-            statusText.innerHTML = '🔧 <strong>Coming Soon:</strong> Downloads are being prepared and will be available shortly.';
-            
-            downloadGrid.innerHTML = `
-                <div class="download-card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
-                    <h3>🚧 Downloads Coming Soon</h3>
-                    <p style="margin-bottom: 2rem;">We're currently preparing the release files. Downloads will be available shortly.</p>
-                    <p style="color: var(--text-light); font-size: 0.9rem;">In the meantime, you can:</p>
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-                        <a href="docs.html" class="download-btn secondary" style="width: auto; min-width: 150px;">Read Documentation</a>
-                        <a href="pricing.html" class="download-btn secondary" style="width: auto; min-width: 150px;">Learn About Support</a>
-                    </div>
-                    <p style="margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">Check back soon or follow our <a href="https://github.com/MDViewer-App/mdviewer.app" target="_blank" style="color: var(--primary-color);">GitHub repository</a> for updates.</p>
-                </div>
-            `;
-        }
-        
-        function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
-        }
-        
-        // Load download options when the page loads
-        document.addEventListener('DOMContentLoaded', loadDownloadOptions);
-    </script>
 </body>
 </html>
