@@ -300,9 +300,9 @@
             </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
+                <a href="downloads.html">Download</a>
                 <a href="docs.html">Documentation</a>
                 <a href="pricing.html" class="active">Support</a>
-                <a href="https://github.com/MDViewer-App/mdviewer.app/releases" target="_blank">GitHub</a>
             </div>
         </div>
     </nav>
@@ -333,7 +333,7 @@
                     Perfect choice! Get MDViewer completely free with all features included.
                 </div>
                 <a href="downloads.html" class="support-btn free">
-                    Get MDViewer Free
+                    Download Free
                 </a>
             </div>
             
@@ -403,24 +403,57 @@
 
     <script>
         function supportWithStripe(amountCents) {
-            // For now, redirect to a simple payment confirmation
-            // In production, this would integrate with Stripe Checkout
             const amount = amountCents / 100;
             
-            // Placeholder: In production, you'd create a Stripe Checkout session
-            // and redirect to it. For now, we'll simulate the flow.
+            // Show loading state
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Processing...';
+            button.disabled = true;
             
-            if (confirm(`Support MDViewer with $${amount}?\n\nThis will redirect you to a secure payment page.`)) {
-                // Simulate payment success for demo
-                window.location.href = `/download-access?tier=paid&amount=${amount}`;
+            // Call Cloudflare Worker to create Stripe Checkout session
+            fetch('https://mdviewer-payments.YOUR_USERNAME.workers.dev/api/create-checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ amount: amountCents })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+                } else {
+                    throw new Error('No checkout URL received');
+                }
+            })
+            .catch(error => {
+                console.error('Payment error:', error);
+                alert('Payment setup failed. Please try again or contact support.');
                 
-                // In production, replace above with:
-                // window.location.href = `https://your-stripe-checkout-url?amount=${amountCents}`;
-            }
+                // Restore button state
+                button.textContent = originalText;
+                button.disabled = false;
+            });
         }
 
-        // Add some nice hover effects
+        // Handle cancelled payments (if user returns from Stripe)
         document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('cancelled') === 'true') {
+                const message = document.createElement('div');
+                message.style.cssText = 'background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 1rem; border-radius: 8px; margin: 1rem auto; max-width: 600px; text-align: center;';
+                message.innerHTML = '⚠️ Payment was cancelled. No worries - you can still <a href="downloads.html">download MDViewer for free</a>!';
+                document.querySelector('.support-tiers').prepend(message);
+            }
+            
+            // Add hover effects
             const cards = document.querySelectorAll('.tier-card');
             cards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
