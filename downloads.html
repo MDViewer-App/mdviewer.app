@@ -417,13 +417,6 @@
                 </div>
                 
                 <div class="download-card">
-                    <h3>🚀 ClickOnce Installer</h3>
-                    <div class="size">~681 KB</div>
-                    <p>One-click web installer that automatically handles dependencies and updates. Perfect for easy deployment.</p>
-                    <button onclick="openClickOnce()" class="download-btn clickonce">Launch ClickOnce</button>
-                </div>
-                
-                <div class="download-card">
                     <h3>📦 Portable ZIP</h3>
                     <div class="size">${portableAsset ? formatFileSize(portableAsset.size) : '~400 MB'}</div>
                     <p>Framework-dependent portable version. Extract and run MDViewer.exe. Requires .NET 8 runtime.</p>
@@ -449,17 +442,7 @@
                 <div class="download-card" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
                     <h3>🚧 Downloads Coming Soon</h3>
                     <p style="margin-bottom: 2rem;">We're currently preparing the release files. Downloads will be available shortly.</p>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-                        <div class="download-card">
-                            <h3>🚀 ClickOnce Available Now</h3>
-                            <div class="size">~681 KB</div>
-                            <p>Web installer is ready for immediate use!</p>
-                            <button onclick="openClickOnce()" class="download-btn clickonce">Launch ClickOnce</button>
-                        </div>
-                    </div>
-                    
-                    <p style="color: var(--text-light); font-size: 0.9rem;">Other download options coming soon. Follow our <a href="https://github.com/MDViewer-App/mdviewer.app" target="_blank" style="color: var(--primary-color);">GitHub repository</a> for updates.</p>
+                    <p style="color: var(--text-light); font-size: 0.9rem;">Follow our <a href="https://github.com/MDViewer-App/mdviewer.app" target="_blank" style="color: var(--primary-color);">GitHub repository</a> for updates.</p>
                 </div>
             `;
         }
