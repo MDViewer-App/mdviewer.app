@@ -726,7 +726,7 @@ Remove-Item $installerPath -Force</code></pre>
             <section id="keyboard" class="section">
                 <h2>⌨️ Keyboard Shortcuts</h2>
                 
-                <h3>Essential Shortcuts</h3>
+                <h3>Working Shortcuts</h3>
                 <table>
                     <thead>
                         <tr>
@@ -736,69 +736,50 @@ Remove-Item $installerPath -Force</code></pre>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Open File</strong></td>
-                            <td><code>Ctrl+O</code></td>
-                            <td>Open markdown file dialog</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Open Editor</strong></td>
-                            <td><code>Ctrl+E</code></td>
-                            <td>Launch built-in text editor</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Documentation Hub</strong></td>
-                            <td><code>Ctrl+D</code></td>
-                            <td>Open enterprise documentation hub</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Refresh</strong></td>
-                            <td><code>F5</code></td>
-                            <td>Reload current document</td>
-                        </tr>
                         <tr>
                             <td><strong>Print/Export PDF</strong></td>
                             <td><code>Ctrl+P</code></td>
-                            <td>Export current document to PDF</td>
+                            <td>Export current document to PDF via browser print dialog</td>
                         </tr>
-                    </tbody>
-                </table>
-                
-                <h3>Zoom and View Controls</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Action</th>
-                            <th>Shortcut</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                         <tr>
                             <td><strong>Zoom In</strong></td>
                             <td><code>Ctrl++</code></td>
-                            <td>Increase content zoom level</td>
+                            <td>Increase content zoom level (WebView2 native)</td>
                         </tr>
                         <tr>
                             <td><strong>Zoom Out</strong></td>
                             <td><code>Ctrl+-</code></td>
-                            <td>Decrease content zoom level</td>
+                            <td>Decrease content zoom level (WebView2 native)</td>
                         </tr>
                         <tr>
                             <td><strong>Reset Zoom</strong></td>
                             <td><code>Ctrl+0</code></td>
-                            <td>Return to 100% zoom level</td>
+                            <td>Return to 100% zoom level (WebView2 native)</td>
                         </tr>
                         <tr>
                             <td><strong>Developer Tools</strong></td>
                             <td><code>F12</code></td>
-                            <td>Open WebView2 developer tools</td>
+                            <td>Open WebView2 developer tools (WebView2 native)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Refresh</strong></td>
+                            <td><code>F5</code></td>
+                            <td>Reload current document (WebView2 native)</td>
                         </tr>
                     </tbody>
                 </table>
                 
+                <h3>Menu Access</h3>
+                <p>Use the application menus for features that don't have working keyboard shortcuts:</p>
+                <ul>
+                    <li><strong>File → Open</strong> - Open markdown file dialog</li>
+                    <li><strong>Tools → Editor</strong> - Launch built-in text editor</li>
+                    <li><strong>Tools → Documentation Hub</strong> - Open enterprise documentation hub</li>
+                    <li><strong>Tools → Edit in External Editor</strong> - Open file in configured external editor</li>
+                </ul>
+                
                 <h3>Editor Shortcuts</h3>
-                <p>When the built-in editor is active:</p>
+                <p>When the built-in editor window is active, standard text editor shortcuts work:</p>
                 <table>
                     <thead>
                         <tr>
