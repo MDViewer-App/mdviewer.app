@@ -397,7 +397,7 @@
                 <div class="card">
                     <h4>Step-by-Step Instructions:</h4>
                     <ol>
-                        <li><strong>Download:</strong> <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi" class="download-btn">MDViewer-v1.4.4-Setup.msi</a></li>
+                        <li><strong>Download:</strong> <a href="https://github.com/MDViewer-App/mdviewer.app/releases/latest/download/MDViewer-Setup.msi" class="download-btn">Latest MDViewer Setup.msi</a></li>
                         <li><strong>Run:</strong> Double-click the downloaded MSI file</li>
                         <li><strong>Install:</strong> Click "Next" through the installation wizard</li>
                         <li><strong>Complete:</strong> Launch from Start Menu or desktop shortcut</li>
@@ -418,7 +418,7 @@
                     <h4>Portable ZIP Archive</h4>
                     <p>Perfect for users without admin rights or development environments.</p>
                     <ol>
-                        <li>Download: <a href="https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Portable.zip" class="download-btn secondary">MDViewer-v1.4.4-Portable.zip</a></li>
+                        <li>Download: <a href="https://github.com/MDViewer-App/mdviewer.app/releases/latest" class="download-btn secondary">Latest Portable Release</a></li>
                         <li>Extract the ZIP archive to desired location</li>
                         <li>Ensure .NET 8 runtime is installed</li>
                         <li>Launch <code>MDViewer.exe</code> from the extracted folder</li>
@@ -431,12 +431,12 @@
                     <h4>Automated Deployment</h4>
                     <p>For system administrators deploying across multiple machines:</p>
                     
-                    <pre><code># Download and run the silent installer
-Invoke-WebRequest -Uri "https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/Install-MDViewer-v1.4.4.bat" -OutFile "Install-MDViewer.bat"
-.\Install-MDViewer.bat
+                    <pre><code># Download and run the silent installer from latest release
+# Visit https://github.com/MDViewer-App/mdviewer.app/releases/latest
+# Download the Install-MDViewer.bat file and run it
 
 # Or install MSI directly with silent parameters
-msiexec /i MDViewer-v1.4.4-Setup.msi /quiet /norestart</code></pre>
+msiexec /i MDViewer-Setup.msi /quiet /norestart</code></pre>
                     
                     <p><strong>Group Policy deployment:</strong> The MSI supports standard Windows deployment via Group Policy Software Installation.</p>
                 </div>
@@ -444,10 +444,10 @@ msiexec /i MDViewer-v1.4.4-Setup.msi /quiet /norestart</code></pre>
                 <h3>Verification</h3>
                 <p>Verify your download integrity using SHA256 checksums:</p>
                 <pre><code># PowerShell verification
-Get-FileHash .\MDViewer-v1.4.4-Setup.msi -Algorithm SHA256
-# Expected: 2F13022D7665BD8F852BA69DF569F86A9D89F3DC89FBC4AEA4D2255856CC669C</code></pre>
+Get-FileHash .\MDViewer-Setup.msi -Algorithm SHA256
+# Checksums available on the GitHub release page</code></pre>
                 
-                <p>📋 Complete checksums available: <a href="https://github.com/MDViewer-App/mdviewer.app/releases/tag/v1.4.4">GitHub Releases Page</a></p>
+                <p>📋 Complete checksums available: <a href="https://github.com/MDViewer-App/mdviewer.app/releases/latest">Latest GitHub Release</a></p>
             </section>
             
             <section id="features" class="section">
@@ -696,7 +696,10 @@ Get-FileHash .\MDViewer-v1.4.4-Setup.msi -Algorithm SHA256
                 <div class="card">
                     <h4>Silent Installation for Teams</h4>
                     <pre><code># PowerShell deployment script
-$installerUrl = "https://github.com/MDViewer-App/mdviewer.app/releases/download/v1.4.4/MDViewer-v1.4.4-Setup.msi"
+# Get the latest release URL programmatically
+$repo = "MDViewer-App/mdviewer.app"
+$releases = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases/latest"
+$installerUrl = $releases.assets | Where-Object { $_.name -like "*Setup.msi" } | Select-Object -ExpandProperty browser_download_url
 $installerPath = "$env:TEMP\MDViewer-Setup.msi"
 
 # Download installer
@@ -833,10 +836,6 @@ Remove-Item $installerPath -Force</code></pre>
                     </tbody>
                 </table>
                 
-                <div class="card info">
-                    <h4>📝 Note on Keyboard Shortcuts</h4>
-                    <p>MDViewer uses enhanced keyboard handling to ensure shortcuts work even when the WebView2 control has focus. All shortcuts are processed at the form level for consistent behavior.</p>
-                </div>
             </section>
             
             <section id="troubleshooting" class="section">
@@ -857,9 +856,9 @@ Remove-Item $installerPath -Force</code></pre>
                 </div>
                 
                 <div class="card warning">
-                    <h4>Threading Errors (Fixed in v1.4.4)</h4>
+                    <h4>Threading Errors</h4>
                     <p><strong>Problem:</strong> "CoreWebView2 can only be accessed from the UI thread" error</p>
-                    <p><strong>Solution:</strong> Update to MDViewer v1.4.4 or later - this critical issue has been resolved.</p>
+                    <p><strong>Solution:</strong> Update to the latest version of MDViewer - this critical issue was resolved in v1.4.4.</p>
                 </div>
                 
                 <div class="card warning">
@@ -869,7 +868,7 @@ Remove-Item $installerPath -Force</code></pre>
                     <ul>
                         <li>Reinstall using the MSI installer with administrator privileges</li>
                         <li>Manually associate .md files: Right-click → Properties → Open with → Choose another app</li>
-                        <li>Run <code>Install-MDViewer-v1.4.4.bat</code> as administrator</li>
+                        <li>Run the latest <code>Install-MDViewer.bat</code> script as administrator</li>
                     </ul>
                 </div>
                 
@@ -1052,12 +1051,12 @@ code {
                 <h3>Version Information</h3>
                 
                 <div class="card info">
-                    <h4>Current Version: 1.4.4</h4>
+                    <h4>Latest Release Information</h4>
+                    <p>Check the <a href="https://github.com/MDViewer-App/mdviewer.app/releases/latest">latest GitHub release</a> for current version details and release notes.</p>
                     <ul>
-                        <li><strong>Release Date:</strong> June 23, 2025</li>
-                        <li><strong>Critical Fix:</strong> WebView2 threading issues resolved</li>
                         <li><strong>Stability:</strong> Production-ready for enterprise use</li>
                         <li><strong>Compatibility:</strong> Windows 10 version 1809+, .NET 8</li>
+                        <li><strong>Updates:</strong> Regular improvements and security patches</li>
                     </ul>
                 </div>
                 
